@@ -100,9 +100,14 @@ def main():
         currentbackground = "mountain.jpg"
         background.blit(images["mountain.jpg"], (0,0))
 
+        #Draw a white rect
+        rectangle, rectrect = box(x = 0, y = 0, width = 300, height = 50, colour = (255, 255, 255))
+        background.blit(rectangle, rectrect)
+
         #Some text rendering
         title = text_image("ExTerra", size = 36, colourTuple = (10, 10, 10))
         subtitle = text_image("An Alex Blandin & William Webb 4X Space Game", 28, (10, 10, 10))
+
 
         #Set text positions
         titlerect = title.get_rect(centerx = background.get_width()/2)

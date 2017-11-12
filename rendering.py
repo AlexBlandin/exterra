@@ -15,6 +15,10 @@ def text(string, x = 0, y = 0, size = 28, colourTuple = (10, 10, 10), font = Non
     image = text_image(string, size, colourTuple, font, aa)
     return image, image.get_rect().move(x, y)
 
+def box(x = 0, y = 0, width = 0, height = 0, colour = (255, 255, 255)):
+    box = pygame.Surface((width, height))
+    box.fill(colour)
+    return box, box.get_rect().move(x, y)
 
 #
 ##  Plotting data
