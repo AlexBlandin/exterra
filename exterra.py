@@ -22,6 +22,16 @@ def main():
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("ExTerra")
 
+    #
+    ##  Image imports
+    #
+    images = {}
+    images["mountain.jpg"] = import_image("mountain.jpg")
+    images["player.png"] = import_image("player.png")
+    some_data_plot = linear_plot([3, 1, 2, 7], size_in_inches = [3, 3]) #plot the points, optional arguments after
+    images["linegraph"] = graph_image(some_data_plot) #generate an image pygame understands
+    images["piechart"] = graph_image(pie_chart([3.14159, 6.28318], labels = ["pi", "tau"], explode = [0.1, 0], shadow = True, size_in_inches = [3.14, 3.14]))
+    save_graph(some_data_plot) #gets saved to a .png tagged with the current date & time
 
     #
     ##  Physics Setup
@@ -33,37 +43,9 @@ def main():
     #
     ##  Background Setup
     #
-    image_background = True
-
-    if image_background:
-        background, background_rect = import_image("mountain.jpg")
-        screen.blit(background, background_rect)
-    else:
-        background = pygame.Surface(screen.get_size())
-        background = background.convert()
-        background.fill((250, 250, 250))
-
-    #Some text rendering
-    title = text_image("ExTerra", size = 36, colourTuple = (10, 10, 10))
-    subtitle = text_image("An Alex Blandin & William Webb 4X Space Game", 28, (10, 10, 10))
-
-    #Set text positions
-    titlerect = title.get_rect(centerx = background.get_width()/2)
-    subtitlerect = subtitle.get_rect(centerx = background.get_width()/2, centery = 35)
-
-    #Showing it can blit to the background
-    background.blit(title, titlerect)
-    background.blit(subtitle, subtitlerect)
-
-    #Some graph rendering
-    some_data_plot = linear_plot([3, 1, 2, 7], size_in_inches = [3, 3]) #plot the points, optional arguments after
-    graph = graph_image(some_data_plot) #generate an image pygame understands
-    piechart = graph_image(pie_chart([3.14159, 6.28318], labels = ["pi", "tau"], explode = [0.1, 0], shadow = True, size_in_inches = [3.14, 3.14]))
-    background.blit(graph, (533, 500)) #and now we can blit a graph
-    background.blit(piechart, (100, 500))
-
-    save_graph(some_data_plot) #gets saved to a .png tagged with the current date & time
-    save_graph(pie_chart([3.14159, 6.28318], labels = ["pi", "tau"], size_in_inches = [3.14, 3.14]))
+    background = pygame.Surface(screen.get_size())
+    background = background.convert()
+    background.fill((250, 250, 250))
 
 
     #
@@ -92,9 +74,6 @@ def main():
     ##  Entity Setup
     #
     entities = []
-    player = Entity("player.png", int( width / 2 ), int( height / 2 ))
-    entities.append(player) #player is passed as a pointer
-    player.center()
 
 
     #
@@ -117,6 +96,26 @@ def main():
                 pass
         if not running:
             continue
+
+        currentbackground = "mountain.jpg"
+        background.blit(images["mountain.jpg"], (0,0))
+
+        #Some text rendering
+        title = text_image("ExTerra", size = 36, colourTuple = (10, 10, 10))
+        subtitle = text_image("An Alex Blandin & William Webb 4X Space Game", 28, (10, 10, 10))
+
+        #Set text positions
+        titlerect = title.get_rect(centerx = background.get_width()/2)
+        subtitlerect = subtitle.get_rect(centerx = background.get_width()/2, centery = 35)
+
+        #Showing it can blit to the background
+        background.blit(title, titlerect)
+        background.blit(subtitle, subtitlerect)
+
+        #Some graph rendering
+        background.blit(images["linegraph"], (533, 300)) #and now we can blit a graph
+        background.blit(images["piechart"], (100, 300))
+
 
         screen.blit(background, (0, 0))
 

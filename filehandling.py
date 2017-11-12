@@ -32,7 +32,7 @@ def import_image(name, colorkey = None):
             colorkey = image.get_at((0,0))
         image.set_colorkey(colorkey, RLEACCEL)
 
-    return image, image.get_rect()
+    return image
 
 #
 ##  Always returns an object of some form, however if sounds can't be played then it's just a dummy

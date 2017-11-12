@@ -6,10 +6,10 @@ from singleton import *
 ##  Base Class -- just something that gets rendered
 #
 class Entity (pygame.sprite.Sprite):
-    def __init__(self, image, x = 0, y = 0, colourKey = None):
+    def __init__(self, image = None, rect = None, x = 0, y = 0):
         pygame.sprite.Sprite.__init__(self)
-        self.image, self.rect = import_image(image, colourKey)
-        self.original, scratch = import_image(image, colourKey)
+        self.image, self.rect = image, rect
+        self.original = image
         self.rect = self.rect.move(x, y)
 
     def center(self):
