@@ -1,7 +1,7 @@
 import pygame, matplotlib
 matplotlib.use("Agg")
-import pylab
-from matplotlib.backends.backend_agg import FigureCanvasAgg
+from matplotlib.backends.backend_agg import FigureCanvasAgg as GraphCanvas
+from matplotlib.figure import Figure as Graph
 
 #
 ##  Returns an image of the input string
@@ -16,13 +16,23 @@ def text(string, x = 0, y = 0, size = 28, colourTuple = (10, 10, 10), font = Non
     return image, image.get_rect().move(x, y)
 
 def graph_image(graph):
-    canvas = FigureCanvasAgg(graph)
+    canvas = GraphCanvas(graph) # https://matplotlib.org/gallery/api/agg_oo_sgskip.html
     canvas.draw()
     rgb_string = canvas.get_renderer().tostring_rgb()
     return pygame.image.fromstring(rgb_string, canvas.get_width_height(), "RGB")
 
-def linear_plot(graph_size = [5, 5], dpi = 100, points = []):
-    graph = matplotlib.figure.Figure(figsize = graph_size, dpi = dpi) # https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html
+def linear_plot(points = [], title = "", xlabel = "", ylabel = "", axes_in_inches = [5, 5], dpi = 100, grid = True):
+    graph = Graph(figsize = axes_in_inches, dpi = dpi) # https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html
     axes = graph.gca() # https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.gca
     axes.plot(points)
+    axes.grid(grid)
+
+    axes.set_title(title)
+    axes.set_xlabel(xlabel)
+    axes.set_ylabel(ylabel)
     return graph
+
+def save_graph(graph):
+    import datetime
+    GraphCanvas(graph)
+    graph.savefig(datetime.datetime.now().strftime("%Y-%m-%d (%H'%M'%S)"))

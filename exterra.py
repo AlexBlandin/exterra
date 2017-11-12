@@ -56,8 +56,10 @@ def main():
     background.blit(subtitle, subtitlepos)
 
     #Some graph rendering
-    graph = graph_image(linear_plot(graph_size = [3, 3], points = [3, 2, 7]))
+    some_data_plot = linear_plot(points = [3, 2, 7], axes_in_inches = [3, 3])
+    graph = graph_image(some_data_plot)
     background.blit(graph, (533, 500))
+    save_graph(some_data_plot)
 
     screen.blit(background, (0, 0))
 
