@@ -48,9 +48,7 @@ class Menu (Entity):
         return None
 
     def update(self):
-        self.image = self.somecombinationofalldata()
-        if self.image != None:
-            self.rect = self.image.get_rect()
+        pass
 
 
 #
