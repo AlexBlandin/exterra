@@ -56,12 +56,11 @@ def main():
     background.blit(subtitle, subtitlepos)
 
     #Some graph rendering
-    some_data_plot = linear_plot(points = [3, 2, 7], axes_in_inches = [3, 3])
-    graph = graph_image(some_data_plot)
-    background.blit(graph, (533, 500))
-    save_graph(some_data_plot)
+    some_data_plot = linear_plot([3, 1, 2, 7], axes_in_inches = [3, 3]) #plot the points, optional arguments after
+    graph = graph_image(some_data_plot) #generate an image pygame understands
+    background.blit(graph, (533, 500)) #and now we can blit a graph
 
-    screen.blit(background, (0, 0))
+    save_graph(some_data_plot) #gets saved to a .png tagged with the current date & time
 
 
     #
