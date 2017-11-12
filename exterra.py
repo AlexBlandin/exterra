@@ -124,7 +124,7 @@ def main():
         background.blit(images["linegraph"], (533, 300)) #and now we can blit a graph
         background.blit(images["piechart"], (100, 300))
 
-        background.blit(images["earth.png"], (screen_width, screen_height))
+        background.blit(images["earth.png"], (screen_width/2, screen_height/2))
 
         screen.blit(background, (0, 0))
 
