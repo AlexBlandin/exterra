@@ -4,12 +4,10 @@ from pygame.compat import geterror
 if not pygame.font: raise SystemExit("Unable to render text, game unplayable!")
 if not pygame.mixer: print ("!!!Warning, sound disabled!!!")
 
-
 #Our stuff
 from filehandling import *
 from classes import *
 from rendering import *
-
 
 def main():
 
@@ -22,6 +20,7 @@ def main():
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("ExTerra")
 
+
     #
     ##  Image imports
     #
@@ -32,6 +31,7 @@ def main():
     images["linegraph"] = graph_image(some_data_plot) #generate an image pygame understands
     images["piechart"] = graph_image(pie_chart([3.14159, 6.28318], labels = ["pi", "tau"], explode = [0.1, 0], shadow = True, size_in_inches = [3.14, 3.14]))
     save_graph(some_data_plot) #gets saved to a .png tagged with the current date & time
+
 
     #
     ##  Physics Setup
@@ -53,6 +53,7 @@ def main():
     #
     save = Save()
     save.load()
+    
 
     #checking save works
     print(save.__dict__) #print all of its members
