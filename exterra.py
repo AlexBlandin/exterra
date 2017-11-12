@@ -35,7 +35,7 @@ def main():
     #
     ##  Physics Setup
     #
-    framerate = 60 #60FPS #PCMasterRace #FrameRatePolice
+    framerate = 23.97 #NTSC Compatability Masterrace
     clock = pygame.time.Clock()
 
 
