@@ -1,4 +1,6 @@
 import os, pygame
+from pygame.locals import *
+from pygame.compat import geterror
 
 #
 ##  Directories

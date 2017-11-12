@@ -1,6 +1,4 @@
 import pygame, matplotlib
-from pygame.locals import *
-from pygame.compat import geterror
 matplotlib.use("agg") # https://matplotlib.org/api/matplotlib_configuration_api.html?highlight=use#matplotlib.use
 from matplotlib.backends.backend_agg import FigureCanvasAgg as GraphCanvas #can't import before setting backend, because matplot
 from matplotlib.figure import Figure as Graph
