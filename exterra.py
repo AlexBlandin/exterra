@@ -25,7 +25,7 @@ def main():
     ##  Image imports
     #
     images = {}
-    images["mountain.jpg"] = import_image("mountain.jpg")
+    images["earth.jpg"] = import_image("earth.jpg")
     images["player.png"] = import_image("player.png")
     some_data_plot = linear_plot([3, 1, 2, 7], size_in_inches = [3, 3]) #plot the points, optional arguments after
     images["linegraph"] = graph_image(some_data_plot) #generate an image pygame understands
@@ -99,9 +99,11 @@ def main():
 
         currentbackground = "mountain.jpg"
         background.blit(images["mountain.jpg"], (0,0))
+        screen_width = background.get_width()
+        screen_height = background.get_height()
 
         #Draw a white rect
-        rectangle, rectrect = box(x = 0, y = 0, width = 300, height = 50, colour = (255, 255, 255))
+        rectangle, rectrect = box(x = screen_width / 2, y = 0, width = 300, height = 50, colour = (255, 255, 255))
         background.blit(rectangle, rectrect)
 
         #Some text rendering
