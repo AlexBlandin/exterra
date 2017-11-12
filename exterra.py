@@ -103,7 +103,7 @@ def main():
         screen_height = background.get_height()
 
         #Draw a white rect
-        rectangle, rectrect = box(x = screen_width / 2, y = 0, width = 300, height = 50, colour = (255, 255, 255))
+        rectangle, rectrect = box(x = (screen_width / 2) - 300, y = 0, width = 600, height = 50, colour = (90, 90, 90))
         background.blit(rectangle, rectrect)
 
         #Some text rendering
