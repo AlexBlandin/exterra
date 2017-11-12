@@ -30,12 +30,12 @@ def linear_plot(points = [], title = "", xlabel = "", ylabel = "", size_in_inche
     axes.set_ylabel(ylabel)
     return graph
 
-def pie_chart(values = [], labels = [], labeldistance = 1.1, explode = None, size_in_inches = [5, 5], dpi = 100):
+def pie_chart(values = [], labels = [], labeldistance = 1.1, explode = None, shadow = False, size_in_inches = [5, 5], dpi = 100):
     #explode is an [] of fractions of the radius with which to offset each wedge
     # https://matplotlib.org/api/_as_gen/matplotlib.pyplot.pie.html#matplotlib.pyplot.pie
     graph = Graph(figsize = size_in_inches, dpi = dpi)
     axes = graph.gca()
-    axes.pie(values, labels = labels, labeldistance = labeldistance, explode = explode)
+    axes.pie(values, labels = labels, labeldistance = labeldistance, explode = explode, shadow = shadow)
 
     return graph
 
