@@ -22,12 +22,17 @@ def main():
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("ExTerra")
 
+
     #
     ##  Physics Setup
     #
     framerate = 60 #60FPS #PCMasterRace #FrameRatePolice
     clock = pygame.time.Clock()
 
+
+    #
+    ##  Background Setup
+    #
     image_background = True
 
     if image_background:
@@ -38,24 +43,24 @@ def main():
         background = background.convert()
         background.fill((250, 250, 250))
 
-
-    #
-    ##  Create Text Images -- for screens etc
-    #
-
-    #Titles
+    #Some text rendering
     title = text_image("ExTerra", 36, (10, 10, 10))
-    titlepos = title.get_rect(centerx=background.get_width()/2)
-
     subtitle = text_image("An Alex Blandin & William Webb 4X Space Game", 28, (10, 10, 10))
-    subtitlepos = subtitle.get_rect(centerx=background.get_width()/2, centery = 35)
 
+    #Set text positions
+    titlepos = title.get_rect(centerx = background.get_width()/2)
+    subtitlepos = subtitle.get_rect(centerx = background.get_width()/2, centery = 35)
 
-    #Adding to background for now
+    #Showing it can blit to the background
     background.blit(title, titlepos)
     background.blit(subtitle, subtitlepos)
 
+    #Some graph rendering
+    graph = graph_image(linear_plot(graph_size = [3, 3], points = [3, 2, 7]))
+    background.blit(graph, (533, 500))
+
     screen.blit(background, (0, 0))
+
 
     #
     ##  Setting up the save data -- and testing it for now
