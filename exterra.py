@@ -1,4 +1,4 @@
-import pygame, imgui
+import pygame
 from pygame.locals import *
 from pygame.compat import geterror
 if not pygame.font: raise SystemExit("Unable to render text, game unplayable!")
