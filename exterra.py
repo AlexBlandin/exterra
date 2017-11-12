@@ -26,6 +26,7 @@ def main():
     #
     images = {}
     images["earth.png"] = import_image("earth.png")
+    images["mountain.jpg"] = import_image("mountain.jpg")
     images["player.png"] = import_image("player.png")
     some_data_plot = linear_plot([3, 1, 2, 7], size_in_inches = [3, 3]) #plot the points, optional arguments after
     images["linegraph"] = graph_image(some_data_plot) #generate an image pygame understands
