@@ -30,7 +30,7 @@ class Entity (pygame.sprite.Sprite):
 
     def update(self):
         pass
-#
+
 
 #
 ##  Menu -- singleton representing all screens in the game -- woot woot data-oriented design
@@ -51,7 +51,7 @@ class Menu (Entity):
         self.image = self.somecombinationofalldata()
         if self.image != None:
             self.rect = self.image.get_rect()
-#
+
 
 #
 ##  Save data -- for now all data is stored in here when saving/loading
@@ -76,7 +76,7 @@ class Save():
         self.__dict__ = {}
         self.__init__()
         self.save()
-#
+
 
 #
 ##  "Physics" enabled entities
@@ -88,4 +88,3 @@ class PhysEntity (Entity):
 
     def move(self):
         self.rect = self.rect.move(self.speed)
-#

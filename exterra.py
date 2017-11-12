@@ -1,4 +1,4 @@
-import pygame
+import pygame, os
 from pygame.locals import *
 from pygame.compat import geterror
 if not pygame.font: raise SystemExit("Unable to render text, game unplayable!")
@@ -16,6 +16,7 @@ def main():
     #
     ##  Window Setup
     #
+    os.environ["SDL_VIDEO_WINDOW_POS"] = "%d,%d" % (500, 100) #Set initial window position
     pygame.init()
     width, height = 933, 900
     screen = pygame.display.set_mode((width, height))
@@ -43,10 +44,10 @@ def main():
     #
 
     #Titles
-    title = make_text("ExTerra", 36, (10, 10, 10))
+    title = text_image("ExTerra", 36, (10, 10, 10))
     titlepos = title.get_rect(centerx=background.get_width()/2)
 
-    subtitle = make_text("An Alex Blandin & William Webb 4X Space Game", 28, (10, 10, 10))
+    subtitle = text_image("An Alex Blandin & William Webb 4X Space Game", 28, (10, 10, 10))
     subtitlepos = subtitle.get_rect(centerx=background.get_width()/2, centery = 35)
 
 
