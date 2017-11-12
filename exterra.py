@@ -18,7 +18,7 @@ def main():
     pygame.init()
     width, height = 933, 900
     screen = pygame.display.set_mode((width, height))
-    pygame.display.set_caption("ExTerra")
+    pygame.display.set_caption("Have you considered succ?")
 
 
     #
@@ -99,6 +99,8 @@ def main():
             continue
 
         currentbackground = "mountain.jpg"
+
+
         background.blit(images[currentbackground], (0,0))
         screen_width = background.get_width()
         screen_height = background.get_height()
