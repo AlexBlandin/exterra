@@ -92,7 +92,7 @@ def main():
     #
     running = True
     while running:
-        clock.tick(framerate)
+        clock.tick(framerate) #if we want a static framerate
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -110,7 +110,7 @@ def main():
 
         screen.blit(background, (0, 0))
 
-        for e in entities: #draw entities
+        for e in entities: #draw everything
             e.update()
             screen.blit(e.image, e.rect)
 
