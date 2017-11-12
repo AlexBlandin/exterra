@@ -25,7 +25,7 @@ def main():
     ##  Image imports
     #
     images = {}
-    images["earth.jpg"] = import_image("earth.jpg")
+    images["earth.png"] = import_image("earth.png")
     images["player.png"] = import_image("player.png")
     some_data_plot = linear_plot([3, 1, 2, 7], size_in_inches = [3, 3]) #plot the points, optional arguments after
     images["linegraph"] = graph_image(some_data_plot) #generate an image pygame understands
@@ -123,6 +123,7 @@ def main():
         background.blit(images["linegraph"], (533, 300)) #and now we can blit a graph
         background.blit(images["piechart"], (100, 300))
 
+        background.blit(images["earth.png"], (screen_width, screen_height)
 
         screen.blit(background, (0, 0))
 
