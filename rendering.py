@@ -1,6 +1,6 @@
 import pygame, matplotlib
-matplotlib.use("Agg")
-from matplotlib.backends.backend_agg import FigureCanvasAgg as GraphCanvas
+matplotlib.use("agg") # https://matplotlib.org/api/matplotlib_configuration_api.html?highlight=use#matplotlib.use
+from matplotlib.backends.backend_agg import FigureCanvasAgg as GraphCanvas #can't import before setting backend, because matplot
 from matplotlib.figure import Figure as Graph
 
 #
