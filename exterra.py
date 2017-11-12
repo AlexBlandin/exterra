@@ -99,9 +99,11 @@ def main():
 
         currentbackground = "mountain.jpg"
         background.blit(images["mountain.jpg"], (0,0))
+        screen_width = background.get_width()
+        screen_height = background.get_height()
 
         #Draw a white rect
-        rectangle, rectrect = box(x = 0, y = 0, width = 300, height = 50, colour = (255, 255, 255))
+        rectangle, rectrect = box(x = screen_width / 2, y = 0, width = 300, height = 50, colour = (255, 255, 255))
         background.blit(rectangle, rectrect)
 
         #Some text rendering
