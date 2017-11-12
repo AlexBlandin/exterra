@@ -40,7 +40,6 @@ class Menu (Entity):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image, self.original = None, None
-        self.contents = [] #inline things -- going to flatten submenus or something
 
     def addtext(self, image, x, y): #offset to the menu's position
         pass
