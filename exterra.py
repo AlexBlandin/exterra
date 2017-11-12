@@ -61,6 +61,8 @@ def main():
     #
     save = Save()
     save.load()
+
+    #checking save works
     print(save.__dict__) #print all of its members
     save.playername = "Alex"
     save.playertime += 1
@@ -68,7 +70,7 @@ def main():
     if save.playertime >= 4:
         save.clear()
 
-    #checking Singletons
+    #checking Singletons work
     menu = Menu()
     hayo = Menu()
     mayo = Menu()
@@ -105,7 +107,7 @@ def main():
                 pass
         if not running:
             continue
-        
+
         screen.blit(background, (0, 0))
 
         for e in entities: #draw entities
