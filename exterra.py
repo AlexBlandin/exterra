@@ -26,6 +26,7 @@ def main():
     #
     images = {}
     images["earth.png"] = import_image("earth.png")
+    images["mountain.jpg"] = import_image("mountain.jpg")
     images["player.png"] = import_image("player.png")
     images["mountain.jpg"] = import_image("mountain.jpg")
     some_data_plot = linear_plot([3, 1, 2, 7], size_in_inches = [3, 3]) #plot the points, optional arguments after
@@ -124,7 +125,7 @@ def main():
         background.blit(images["linegraph"], (533, 300)) #and now we can blit a graph
         background.blit(images["piechart"], (100, 300))
 
-        background.blit(images["earth.png"], (screen_width, screen_height))
+        background.blit(images["earth.png"], (screen_width/2, screen_height/2))
 
         screen.blit(background, (0, 0))
 
