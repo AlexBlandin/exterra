@@ -100,11 +100,7 @@ def main():
 
         currentbackground = "mountain.jpg"
 
-<<<<<<< HEAD
-
-=======
         
->>>>>>> 68382f0e1674e0533f640d3152ed427e63db844a
         background.blit(images[currentbackground], (0,0))
         screen_width = background.get_width()
         screen_height = background.get_height()
