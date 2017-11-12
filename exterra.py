@@ -44,16 +44,16 @@ def main():
         background.fill((250, 250, 250))
 
     #Some text rendering
-    title = text_image("ExTerra", 36, (10, 10, 10))
+    title = text_image("ExTerra", size = 36, colourTuple = (10, 10, 10))
     subtitle = text_image("An Alex Blandin & William Webb 4X Space Game", 28, (10, 10, 10))
 
     #Set text positions
-    titlepos = title.get_rect(centerx = background.get_width()/2)
-    subtitlepos = subtitle.get_rect(centerx = background.get_width()/2, centery = 35)
+    titlerect = title.get_rect(centerx = background.get_width()/2)
+    subtitlerect = subtitle.get_rect(centerx = background.get_width()/2, centery = 35)
 
     #Showing it can blit to the background
-    background.blit(title, titlepos)
-    background.blit(subtitle, subtitlepos)
+    background.blit(title, titlerect)
+    background.blit(subtitle, subtitlerect)
 
     #Some graph rendering
     some_data_plot = linear_plot([3, 1, 2, 7], axes_in_inches = [3, 3]) #plot the points, optional arguments after

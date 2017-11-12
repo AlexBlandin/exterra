@@ -15,12 +15,10 @@ def text(string, x = 0, y = 0, size = 28, colourTuple = (10, 10, 10), font = Non
     image = text_image(string, size, colourTuple, font, aa)
     return image, image.get_rect().move(x, y)
 
-def graph_image(graph):
-    canvas = GraphCanvas(graph) # https://matplotlib.org/gallery/api/agg_oo_sgskip.html
-    canvas.draw()
-    rgb_string = canvas.get_renderer().tostring_rgb()
-    return pygame.image.fromstring(rgb_string, canvas.get_width_height(), "RGB")
 
+#
+##  Plotting data
+#
 def linear_plot(points = [], title = "", xlabel = "", ylabel = "", axes_in_inches = [5, 5], dpi = 100, grid = True):
     graph = Graph(figsize = axes_in_inches, dpi = dpi) # https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html
     axes = graph.gca() # https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.gca
@@ -31,6 +29,16 @@ def linear_plot(points = [], title = "", xlabel = "", ylabel = "", axes_in_inche
     axes.set_xlabel(xlabel)
     axes.set_ylabel(ylabel)
     return graph
+
+
+#
+## Graphing plots
+#
+def graph_image(graph):
+    canvas = GraphCanvas(graph) # https://matplotlib.org/gallery/api/agg_oo_sgskip.html
+    canvas.draw()
+    rgb_string = canvas.get_renderer().tostring_rgb()
+    return pygame.image.fromstring(rgb_string, canvas.get_width_height(), "RGB")
 
 def save_graph(graph):
     import datetime
