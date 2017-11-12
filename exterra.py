@@ -56,9 +56,11 @@ def main():
     background.blit(subtitle, subtitlerect)
 
     #Some graph rendering
-    some_data_plot = linear_plot([3, 1, 2, 7], axes_in_inches = [3, 3]) #plot the points, optional arguments after
+    some_data_plot = linear_plot([3, 1, 2, 7], size_in_inches = [3, 3]) #plot the points, optional arguments after
     graph = graph_image(some_data_plot) #generate an image pygame understands
+    piechart = graph_image(pie_chart([3.14159, 6.28318], labels = ["pi", "tau"], size_in_inches = [3.14, 3.14]))
     background.blit(graph, (533, 500)) #and now we can blit a graph
+    background.blit(piechart, (100, 500))
 
     save_graph(some_data_plot) #gets saved to a .png tagged with the current date & time
 

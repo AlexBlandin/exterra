@@ -19,8 +19,8 @@ def text(string, x = 0, y = 0, size = 28, colourTuple = (10, 10, 10), font = Non
 #
 ##  Plotting data
 #
-def linear_plot(points = [], title = "", xlabel = "", ylabel = "", axes_in_inches = [5, 5], dpi = 100, grid = True):
-    graph = Graph(figsize = axes_in_inches, dpi = dpi) # https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html
+def linear_plot(points = [], title = "", xlabel = "", ylabel = "", size_in_inches = [5, 5], dpi = 100, grid = True):
+    graph = Graph(figsize = size_in_inches, dpi = dpi) # https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html
     axes = graph.gca() # https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.gca
     axes.plot(points)
     axes.grid(grid)
@@ -29,6 +29,16 @@ def linear_plot(points = [], title = "", xlabel = "", ylabel = "", axes_in_inche
     axes.set_xlabel(xlabel)
     axes.set_ylabel(ylabel)
     return graph
+
+def pie_chart(values = [], labels = [], labeldistance = 1.1, explode = None, size_in_inches = [5, 5], dpi = 100):
+    #explode is an [] of fractions of the radius with which to offset each wedge
+    # https://matplotlib.org/api/_as_gen/matplotlib.pyplot.pie.html#matplotlib.pyplot.pie
+    graph = Graph(figsize = size_in_inches, dpi = dpi)
+    axes = graph.gca()
+    axes.pie(values, labels = labels, labeldistance = labeldistance, explode = explode)
+
+    return graph
+
 
 
 #
