@@ -119,4 +119,4 @@ def main():
     pygame.quit()
 
 
-if __name__ == '__main__': main() #ignore this, pygame likes to cry
+if __name__ == '__main__': main()
