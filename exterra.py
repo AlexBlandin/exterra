@@ -124,9 +124,10 @@ def main():
         background.blit(images["linegraph"], (533, 300)) #and now we can blit a graph
         background.blit(images["piechart"], (100, 300))
 
-        earthrect = images["earth.png"].get_rect(centerx = screen_width/2, centery = screen_height/2)
+        earth = pygame.transform.scale(images["earth.png"], (256, 256))
+        earthrect = earth.get_rect(centerx = screen_width/2, centery = screen_height/2)
 
-        background.blit(images["earth.png"], earthrect)
+        background.blit(earth, earthrect)
 
         screen.blit(background, (0, 0))
 
