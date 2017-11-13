@@ -52,7 +52,7 @@ def button(rendertarget, x = 0, y = 0, width = 0, height = 0, colour = (0, 0, 0)
         width, height = beutonrect
     else:
         beuton = box(x = x, y = y, width = height, height = height, colour = colour, image = image)
-    if mouseleft and within(mousepos, (x, y, width, height)):
+    if leftdown and within(mousepos, (x, y, width, height)):
         return True
     else:
         return False

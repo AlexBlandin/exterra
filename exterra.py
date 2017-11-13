@@ -106,13 +106,16 @@ def main():
         #pygame.mouse.set_visible()
         #pygame.mouse.get_focused()
 
+
         currentbackground = "mountain.jpg"
 
 
         background.blit(images[currentbackground], (0,0))
 
 
-        demo(background, leftdown, rightdown, middledown, mousepos, screen_width, screen_height, images, framerate, clock, save)
+        save.screen, save.background, save.leftdown, save.rightdown, save.middledown, save.mousepos, save.screen_width, save.screen_height, save.images, save.framerate, save.clock  = screen, background, leftdown, rightdown, middledown, mousepos, screen_width, screen_height, images, framerate, clock
+
+        demo(save)
 
         for e in entities: #draw everything
             e.update()
