@@ -35,8 +35,6 @@ def main():
     framerate = 60 #60FPS #PCMasterRace #FrameRatePolice
     clock = pygame.time.Clock()
 
-    offset = 0
-
 
     #
     ##  Background Setup
@@ -102,23 +100,11 @@ def main():
         #pygame.event.wait() or pygame.event.get() and check all of those events
         leftdown, rightdown, middledown = pygame.mouse.get_pressed() # -> (mouse1, mouse2, mouse3) -- a sequence of bools, true = pressed
         mousepos = pygame.mouse.get_pos() # -> (x, y)
-
-        if leftdown:
-            offset -= 1.0
-
         #pygame.mouse.set_pos()
         #pygame.mouse.set_visible()
         #pygame.mouse.get_focused()
 
         currentbackground = "mountain.jpg"
-
-
-
-        if button(background, x = 400, y = 350, width = 40, height = 40):
-            offset -= 10
-
-
-
 
 
         background.blit(images[currentbackground], (0,0))

@@ -10,6 +10,9 @@ from classes import *
 from rendering import *
 
 def demo():
+        if button(background, x = 400, y = 350, width = 40, height = 40):
+            offset -= 10
+
         #Draw a white rect
         rectangle, rectrect = box(x = (screen_width / 2) - 300, y = 0, width = 600, height = 70, colour = (90, 90, 90))
         background.blit(rectangle, rectrect)
@@ -44,3 +47,5 @@ def demo_setup():
     some_data_plot = linear_plot([3, 1, 2, 7], size_in_inches = [3, 3]) #plot the points, optional arguments after
     images["linegraph"] = graph_image(some_data_plot) #generate an image pygame understands
     images["piechart"] = graph_image(pie_chart([3.14159, 6.28318], labels = ["pi", "tau"], shadow = True, size_in_inches = [3.14, 3.14]))
+
+    offset = 0
