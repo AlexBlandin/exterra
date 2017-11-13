@@ -38,6 +38,8 @@ def main():
     framerate = 60 #60FPS #PCMasterRace #FrameRatePolice
     clock = pygame.time.Clock()
 
+    offset = 0
+
 
     #
     ##  Background Setup
@@ -83,6 +85,8 @@ def main():
     while running:
         clock.tick(framerate) #if we want a static framerate
 
+        offset += 0.3
+
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
@@ -91,7 +95,7 @@ def main():
                 running = False
                 break
             elif event.type == MOUSEBUTTONDOWN:
-                pass
+                offset -= 10
             elif event.type == MOUSEBUTTONUP:
                 pass
         if not running:
@@ -125,7 +129,7 @@ def main():
         background.blit(images["piechart"], (100, 300))
 
         earth = pygame.transform.scale(images["earth.png"], (256, 256))
-        earthrect = earth.get_rect(centerx = screen_width/2, centery = screen_height/2)
+        earthrect = earth.get_rect(centerx = screen_width/2, centery = (screen_height/2) + offset)
 
         background.blit(earth, earthrect)
 
