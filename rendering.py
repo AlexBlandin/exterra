@@ -26,10 +26,7 @@ def box(x = 0, y = 0, width = 0, height = 0, colour = (255, 255, 255)):
 
 def text_box(string, x = 0, y = 0, padding = 5, fontsize = 28, fontcolour = (10, 10, 10), colour = (0, 0, 0), font = None, aa = 1):
     textimage, textrect = text(string, fontsize = fontsize, fontcolour = fontcolour, font = font, aa = aa)
-    #surface = pygame.Surface(textrect)
     scratch, pad, width, height = textrect
-    #width = textrect.get_width()
-    #height = textrect.get_height()
     textbox, boxrect = box(x = x - padding, y = y - padding, width = width + (2*padding), height = height + (2*padding) - 3, colour = colour)
     textbox.blit(textimage, (padding, padding))
     return textbox, boxrect
