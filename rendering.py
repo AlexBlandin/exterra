@@ -6,9 +6,15 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as GraphCanvas #can'
 from matplotlib.figure import Figure as Graph
 
 #
+##  Rect & Image functions
 #
-#
-def within()
+def within(pos, rect):
+    mx, my = pos
+    ax, ay, aw, ah = rect
+    if mx >= ax and my >= ay and mx <= ax + aw and my <= ay + ah:
+        return True
+    else:
+        return False
 
 #
 ##  Text rendering
@@ -46,7 +52,10 @@ def button(rendertarget, x = 0, y = 0, width = 0, height = 0, colour = (0, 0, 0)
         width, height = beutonrect
     else:
         beuton = box(x = x, y = y, width = height, height = height, colour = colour, image = image)
-    if mouseleft and within(mousepos, x, y, width, height):
+    if mouseleft and within(mousepos, (x, y, width, height)):
+        return True
+    else:
+        return False
 
 #
 ##  Plotting data

@@ -8,10 +8,16 @@ if not pygame.mixer: print ("!!!Warning, sound disabled!!!")
 from filehandling import *
 from classes import *
 from rendering import *
+from exterra import *
+
+images = {}
+offset = 0
 
 def demo():
         if button(background, x = 400, y = 350, width = 40, height = 40):
             offset -= 10
+        else:
+            offset += 0.3
 
         #Draw a white rect
         rectangle, rectrect = box(x = (screen_width / 2) - 300, y = 0, width = 600, height = 70, colour = (90, 90, 90))
@@ -39,13 +45,3 @@ def demo():
         background.blit(earth, earthrect)
 
         screen.blit(background, (0, 0))
-
-def demo_setup():
-    images["earth.png"] = import_image("earth.png", -1)
-    images["mountain.jpg"] = import_image("mountain.jpg")
-    images["player.png"] = import_image("player.png")
-    some_data_plot = linear_plot([3, 1, 2, 7], size_in_inches = [3, 3]) #plot the points, optional arguments after
-    images["linegraph"] = graph_image(some_data_plot) #generate an image pygame understands
-    images["piechart"] = graph_image(pie_chart([3.14159, 6.28318], labels = ["pi", "tau"], shadow = True, size_in_inches = [3.14, 3.14]))
-
-    offset = 0
