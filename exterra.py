@@ -110,7 +110,7 @@ def main():
 
         #Some text rendering
         title, titlerect = text_box("ExTerra", fontsize = 36, fontcolour = (70, 70, 70))
-        subtitle = text_image("A Alex Blandin & William Webb 4X Space Game", 28, (10, 10, 10))
+        subtitle = text_image("A William Webb & Alex Blandin 4X Space Game", 28, (10, 10, 10))
 
         #Set text positions
         titlerect = title.get_rect(centerx = screen_width/2, y = 5)
