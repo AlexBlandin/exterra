@@ -4,21 +4,39 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as GraphCanvas #can'
 from matplotlib.figure import Figure as Graph
 
 #
-##  Returns an image of the input string
+##  Text rendering
 #
-def text_image(string, size = 28, colourTuple = (10, 10, 10), font = None, aa = 1):
-    font = pygame.font.Font(font, size)
-    text = font.render(string, aa, colourTuple)
+def text_image(string, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
+    font = pygame.font.Font(font, fontsize)
+    text = font.render(string, aa, fontcolour)
     return text
 
-def text(string, x = 0, y = 0, size = 28, colourTuple = (10, 10, 10), font = None, aa = 1):
-    image = text_image(string, size, colourTuple, font, aa)
+def text(string, x = 0, y = 0, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
+    image = text_image(string, fontsize, fontcolour, font, aa)
     return image, image.get_rect().move(x, y)
 
+
+#
+##  Menu options
+#
 def box(x = 0, y = 0, width = 0, height = 0, colour = (255, 255, 255)):
     box = pygame.Surface((width, height))
     box.fill(colour)
     return box, box.get_rect().move(x, y)
+
+def text_box(string, x = 0, y = 0, padding = 5, fontsize = 28, fontcolour = (10, 10, 10), colour = (0, 0, 0), font = None, aa = 1):
+    textimage, textrect = text(string, fontsize = fontsize, fontcolour = fontcolour, font = font, aa = aa)
+    #surface = pygame.Surface(textrect)
+    scratch, pad, width, height = textrect
+    #width = textrect.get_width()
+    #height = textrect.get_height()
+    textbox, boxrect = box(x = x - padding, y = y - padding, width = width + (2*padding), height = height + (2*padding) - 3, colour = colour)
+    textbox.blit(textimage, (padding, padding))
+    return textbox, boxrect
+
+def button(x = 0, y = 0, width = 0, height = 0, colour = (0, 0, 0), text = "", text_colour = ()):
+    pass
+
 
 #
 ##  Plotting data
@@ -42,7 +60,6 @@ def pie_chart(values = [], labels = [], labeldistance = 1.1, explode = None, sha
     axes.pie(values, labels = labels, labeldistance = labeldistance, explode = explode, shadow = shadow)
 
     return graph
-
 
 
 #

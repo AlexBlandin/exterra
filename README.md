@@ -1,6 +1,6 @@
 ExTerra
 =============
-An Alex Blandin &amp; William Webb 4X Space Game
+A Alex Blandin &amp; William Webb 4X Space Game
 -------------
 Part of the Swansea University Game Jam (2017).
 

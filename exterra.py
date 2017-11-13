@@ -10,7 +10,6 @@ from classes import *
 from rendering import *
 
 def main():
-
     #
     ##  Window Setup
     #
@@ -106,17 +105,16 @@ def main():
         screen_height = background.get_height()
 
         #Draw a white rect
-        rectangle, rectrect = box(x = (screen_width / 2) - 300, y = 0, width = 600, height = 50, colour = (90, 90, 90))
+        rectangle, rectrect = box(x = (screen_width / 2) - 300, y = 0, width = 600, height = 70, colour = (90, 90, 90))
         background.blit(rectangle, rectrect)
 
         #Some text rendering
-        title = text_image("ExTerra", size = 36, colourTuple = (10, 10, 10))
-        subtitle = text_image("An Alex Blandin & William Webb 4X Space Game", 28, (10, 10, 10))
-
+        title, titlerect = text_box("ExTerra", fontsize = 36, fontcolour = (70, 70, 70))
+        subtitle = text_image("A Alex Blandin & William Webb 4X Space Game", 28, (10, 10, 10))
 
         #Set text positions
-        titlerect = title.get_rect(centerx = background.get_width()/2)
-        subtitlerect = subtitle.get_rect(centerx = background.get_width()/2, centery = 35)
+        titlerect = title.get_rect(centerx = screen_width/2, y = 5)
+        subtitlerect = subtitle.get_rect(centerx = screen_width/2, centery = 50)
 
         #Showing it can blit to the background
         background.blit(title, titlerect)
@@ -126,7 +124,9 @@ def main():
         background.blit(images["linegraph"], (533, 300)) #and now we can blit a graph
         background.blit(images["piechart"], (100, 300))
 
-        background.blit(images["earth.png"], images["earth.png"].get_rect(centerx = screen_width/2, centery = screen_height/2))
+        earthrect = images["earth.png"].get_rect(centerx = screen_width/2, centery = screen_height/2)
+
+        background.blit(images["earth.png"], earthrect)
 
         screen.blit(background, (0, 0))
 
