@@ -6,6 +6,11 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as GraphCanvas #can'
 from matplotlib.figure import Figure as Graph
 
 #
+#
+#
+def within()
+
+#
 ##  Text rendering
 #
 def text_image(string, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
@@ -21,7 +26,7 @@ def text(string, x = 0, y = 0, fontsize = 28, fontcolour = (10, 10, 10), font = 
 #
 ##  Menu options
 #
-def box(x = 0, y = 0, width = 0, height = 0, colour = (255, 255, 255), image = None):
+def box(x = 0, y = 0, width = 0, height = 0, colour = (0, 0, 0), image = None):
     box = pygame.Surface((width, height))
     box.fill(colour)
     if image != None:
@@ -35,9 +40,13 @@ def text_box(string, x = 0, y = 0, padding = 5, fontsize = 28, fontcolour = (10,
     textbox.blit(textimage, (padding, padding))
     return textbox, boxrect
 
-def button(x = 0, y = 0, width = 0, height = 0, colour = (0, 0, 0), text = "", text_colour = ()):
-    pass
-
+def button(rendertarget, x = 0, y = 0, width = 0, height = 0, colour = (0, 0, 0), image = None, text = None, padding = 5, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
+    if text != None:
+        beuton, beutonrect = text_box(text, x = x, y = y, padding = padding, fontsize = fontsize, fontcolour = fontcolour, colour = colour, image = image, font = font, aa = aa)
+        width, height = beutonrect
+    else:
+        beuton = box(x = x, y = y, width = height, height = height, colour = colour, image = image)
+    if mouseleft and within(mousepos, x, y, width, height):
 
 #
 ##  Plotting data
