@@ -19,12 +19,17 @@ def main():
     screen_width, screen_height = 933, 900
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("Caption")
+    context = Context()
+    context.screen = screen
+    context.screen_width = screen_width
+    context.screen_height = screen_height
 
 
     #
     ##  Image imports
     #
     images = {}
+    context.images = images
 
     images["earth.png"] = import_image("earth.png", -1)
     images["mountain.jpg"] = import_image("mountain.jpg")
@@ -39,6 +44,8 @@ def main():
     #
     framerate = 60 #60FPS #PCMasterRace #FrameRatePolice
     clock = pygame.time.Clock()
+    context.framerate = framerate
+    context.clock = clock
 
 
     #
@@ -113,9 +120,9 @@ def main():
         background.blit(images[currentbackground], (0,0))
 
 
-        save.screen, save.background, save.leftdown, save.rightdown, save.middledown, save.mousepos, save.screen_width, save.screen_height, save.images, save.framerate, save.clock  = screen, background, leftdown, rightdown, middledown, mousepos, screen_width, screen_height, images, framerate, clock
+        context.background, context.leftdown, context.rightdown, context.middledown, context.mousepos, context.images, context.framerate, context.clock  = background, leftdown, rightdown, middledown, mousepos, images
 
-        demo(save)
+        demo(context)
 
         for e in entities: #draw everything
             e.update()

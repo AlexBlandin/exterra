@@ -36,19 +36,9 @@ class Entity (pygame.sprite.Sprite):
 ##  Menu -- singleton representing all screens in the game -- woot woot data-oriented design
 #
 @Singleton
-class Menu (Entity):
+class Context ():
     def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image, self.original = None, None
-
-    def addtext(self, image, x, y): #offset to the menu's position
-        pass
-
-    def somecombinationofalldata():
-        return None
-
-    def update(self):
-        pass
+        self.context = True
 
 
 #

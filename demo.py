@@ -13,8 +13,8 @@ from exterra import *
 images = {}
 offset = 0
 
-def demo(save):
-        screen, background, leftdown, rightdown, middledown, mousepos, screen_width, screen_height, images, framerate, clock = save.screen, save.background, save.leftdown, save.rightdown, save.middledown, save.mousepos, save.screen_width, save.screen_height, save.images, save.framerate, save.clock
+def demo(context):
+        screen, background, leftdown, rightdown, middledown, mousepos, screen_width, screen_height, images, framerate, clock = context.screen, context.background, context.leftdown, context.rightdown, context.middledown, context.mousepos, context.screen_width, context.screen_height, context.images, context.framerate, context.clock
 
         if button(background, x = 400, y = 350, width = 40, height = 40):
             offset -= 10
