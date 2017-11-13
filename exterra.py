@@ -16,8 +16,8 @@ def main():
     #
     os.environ["SDL_VIDEO_WINDOW_POS"] = "%d,%d" % (500, 100) #Set initial window position
     pygame.init()
-    width, height = 933, 900
-    screen = pygame.display.set_mode((width, height))
+    screen_width, screen_height = 933, 900
+    screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("Caption")
 
 
@@ -26,7 +26,12 @@ def main():
     #
     images = {}
 
-    demo_setup()
+    images["earth.png"] = import_image("earth.png", -1)
+    images["mountain.jpg"] = import_image("mountain.jpg")
+    images["player.png"] = import_image("player.png")
+    some_data_plot = linear_plot([3, 1, 2, 7], size_in_inches = [3, 3]) #plot the points, optional arguments after
+    images["linegraph"] = graph_image(some_data_plot) #generate an image pygame understands
+    images["piechart"] = graph_image(pie_chart([3.14159, 6.28318], labels = ["pi", "tau"], shadow = True, size_in_inches = [3.14, 3.14]))
 
 
     #
@@ -60,11 +65,10 @@ def main():
         save.clear()
 
     #checking Singletons work
-    menu = Menu()
-    hayo = Menu()
-    mayo = Menu()
+    shave = Save()
+    cave = Save()
 
-    print("It is %s that Menu() is a Singleton" % (menu is hayo is mayo))
+    print("It is %s that Save() is a Singleton" % (save is shave is cave))
 
 
     #
@@ -80,8 +84,6 @@ def main():
     while running:
         clock.tick(framerate) #if we want a static framerate
 
-        offset += 0.3
-
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
@@ -90,7 +92,7 @@ def main():
                 running = False
                 break
             elif event.type == MOUSEBUTTONDOWN:
-                offset -= 0.3
+                pass
             elif event.type == MOUSEBUTTONUP:
                 pass
         if not running:
@@ -108,9 +110,9 @@ def main():
 
 
         background.blit(images[currentbackground], (0,0))
-        screen_width = background.get_width()
-        screen_height = background.get_height()
 
+
+        demo(background, leftdown, rightdown, middledown, mousepos, screen_width, screen_height, images, framerate, clock, save)
 
         for e in entities: #draw everything
             e.update()
