@@ -101,6 +101,15 @@ def main():
         if not running:
             continue
 
+        #mouse https://www.pygame.org/docs/ref/mouse.html
+        #pygame.event.wait() or pygame.event.get() and check all of those events
+        mousepressed = pygame.mouse.get_pressed() # -> (mouse1, mouse2, mouse3) -- a sequence of bools, true = pressed
+        mousepos = pygame.mouse.get_pos() # -> (x, y)
+
+        #pygame.mouse.set_pos()
+        #pygame.mouse.set_visible()
+        #pygame.mouse.get_focused()
+
         currentbackground = "mountain.jpg"
 
 
