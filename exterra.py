@@ -95,7 +95,7 @@ def main():
                 running = False
                 break
             elif event.type == MOUSEBUTTONDOWN:
-                offset -= 10
+                offset -= 0.3
             elif event.type == MOUSEBUTTONUP:
                 pass
         if not running:
@@ -103,8 +103,11 @@ def main():
 
         #mouse https://www.pygame.org/docs/ref/mouse.html
         #pygame.event.wait() or pygame.event.get() and check all of those events
-        mousepressed = pygame.mouse.get_pressed() # -> (mouse1, mouse2, mouse3) -- a sequence of bools, true = pressed
+        leftdown, rightdown, middledown = pygame.mouse.get_pressed() # -> (mouse1, mouse2, mouse3) -- a sequence of bools, true = pressed
         mousepos = pygame.mouse.get_pos() # -> (x, y)
+
+        if leftdown:
+            offset -= 1.0
 
         #pygame.mouse.set_pos()
         #pygame.mouse.set_visible()
