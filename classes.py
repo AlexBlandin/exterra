@@ -1,4 +1,5 @@
 import pygame, pickle
+from context import *
 from filehandling import *
 from singleton import *
 
@@ -30,15 +31,6 @@ class Entity (pygame.sprite.Sprite):
 
     def update(self):
         pass
-
-
-#
-##  Menu -- singleton representing all screens in the game -- woot woot data-oriented design
-#
-@Singleton
-class Context ():
-    def __init__(self):
-        self.context = True
 
 
 #

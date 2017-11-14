@@ -4,6 +4,7 @@ matplotlib.use("agg") # https://matplotlib.org/api/matplotlib_configuration_api.
 
 from matplotlib.backends.backend_agg import FigureCanvasAgg as GraphCanvas #can't import before setting backend, because matplot
 from matplotlib.figure import Figure as Graph
+from context import *
 
 #
 ##  Rect & Image functions

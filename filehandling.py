@@ -1,4 +1,5 @@
 import os, pygame
+from context import *
 from pygame.locals import *
 from pygame.compat import geterror
 
