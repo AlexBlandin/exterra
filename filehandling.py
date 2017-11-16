@@ -1,5 +1,6 @@
 import os, pygame
-from context import *
+
+from globals import *
 from pygame.locals import *
 from pygame.compat import geterror
 
@@ -8,6 +9,7 @@ from pygame.compat import geterror
 #
 main_dir = os.path.split(os.path.abspath(__file__))[0]
 data_dir = os.path.join(main_dir, "data")
+
 
 #
 ##  Return full path to a file
@@ -37,8 +39,9 @@ def import_image(name, colorkey = None):
 
     return image
 
+
 #
-##  Always returns an object of some form, however if sounds can't be played then it's just a dummy
+##  Always returns an object of some form, however if sounds can't be played then it's just a dumb container
 #
 def import_sound(name):
     class NoSound: #dummy for when pygame.mixer fails

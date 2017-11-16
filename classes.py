@@ -1,5 +1,6 @@
 import pygame, pickle
-from context import *
+
+from globals import *
 from filehandling import *
 from singleton import *
 
