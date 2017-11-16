@@ -8,10 +8,12 @@ if not pygame.mixer: print ("!!!Warning, sound disabled!!!")
 import globals
 globals.init()
 from globals import *
+
 from filehandling import *
 from classes import *
 from rendering import *
-from demo import *
+
+
 
 def main():
     #
@@ -19,12 +21,9 @@ def main():
     #
     os.environ["SDL_VIDEO_WINDOW_POS"] = "%d,%d" % (500, 100) #Set initial window position
     pygame.init()
-    screen_width, screen_height = 933, 900
-    screen = pygame.display.set_mode((screen_width, screen_height))
+    context["screen_width"], context["screen_height"] = 933, 900
+    screen = pygame.display.set_mode((context["screen_width"], context["screen_height"]))
     pygame.display.set_caption("Caption")
-    context["screen"] = screen
-    context["screen_width"] = screen_width
-    context["screen_height"] = screen_height
 
 
     #
@@ -49,7 +48,7 @@ def main():
     #
     ##  Initialise any static images based on screen-size etc.
     #
-    basecolour = pygame.Surface(screen.get_size())
+    basecolour = pygame.Surface((context["screen_width"], context["screen_height"]))
     basecolour = basecolour.convert()
     basecolour.fill((250, 250, 250))
     images["basecolour"] = basecolour
@@ -73,6 +72,7 @@ def main():
     #checking Singletons work
     maze = Save()
     endoftheuniverse = Save()
+    context["offset"] = 0
 
     print("It is %s that Save() is a Singleton" % (save is maze is endoftheuniverse))
 
@@ -100,8 +100,8 @@ def main():
 
         #mouse https://www.pygame.org/docs/ref/mouse.html
         #pygame.event.wait() or pygame.event.get() and check all of those events
-        leftdown, rightdown, middledown = pygame.mouse.get_pressed() # -> (mouse1, mouse2, mouse3) -- a sequence of bools, true = pressed
-        mousepos = pygame.mouse.get_pos() # -> (x, y)
+        context["leftdown"], context["rightdown"], context["middledown"] = pygame.mouse.get_pressed() # -> (mouse1, mouse2, mouse3) -- a sequence of bools, true = pressed
+        context["mousepos"] = pygame.mouse.get_pos() # -> (x, y)
         #pygame.mouse.set_pos()
         #pygame.mouse.set_visible()
         #pygame.mouse.get_focused()
@@ -109,13 +109,49 @@ def main():
 
         #for now not "zeroing" the screen, relying on background being sufficiently large, otherwise will need to use coloured fill to start frame
         currentbackground = "mountain.jpg"
-        blitqueue = [(images[currentbackground], (0, 0))] #refresh blitqueue with the background
+        blitque = [(images[currentbackground], (0, 0))] #refresh blitque with the background
 
 
-        demo() #just examples
 
 
-        for image, rect in blitqueue: #blit straight to screen -- can do by layer IF NEEDED, would start with background & move forward
+        #Draw a white rect
+        rectangle, rectrect = box(x = (context["screen_width"]/2) - 300, y = 0, width = 600, height = 70, colour = (90, 90, 90))
+        blitque.append((rectangle, rectrect))
+
+        #Some text rendering
+        title, titlerect = text_box("ExTerra", fontsize = 36, fontcolour = (70, 70, 70))
+        subtitle = text_image("A William Webb & Alex Blandin 4X Space Game", 28, (10, 10, 10))
+
+        #Set text positions
+        titlerect = title.get_rect(centerx = context["screen_width"]/2, y = 5)
+        subtitlerect = subtitle.get_rect(centerx = context["screen_width"]/2, centery = 50)
+
+        #Showing it can blit to the background
+        blitque.append((title, titlerect))
+        blitque.append((subtitle, subtitlerect))
+
+        #Some graph rendering
+        blitque.append((images["linegraph"], (533, 300))) #and now we can blit a graph
+        blitque.append((images["piechart"], (100, 300)))
+
+        #Generate a more managable Earth. Might be impossible
+        earth = pygame.transform.scale(images["earth.png"], (256, 256))
+        earthrect = earth.get_rect(centerx = context["screen_width"]/2, centery = (context["screen_height"]/2) + context["offset"])
+
+        blitque.append((earth, earthrect))
+
+        clicked, buttonpair = button(x = 700, y = 700, width = 100, height = 100, colour = (20, 20, 20))
+        if clicked:
+            context["offset"] -= 1
+        else:
+            context["offset"] += 0.3
+        blitque.append(buttonpair)
+
+
+
+
+
+        for image, rect in blitque: #blit straight to screen -- can do by layer IF NEEDED, would start with background & move forward
             screen.blit(image, rect)
 
         pygame.display.flip()
