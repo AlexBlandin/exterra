@@ -19,7 +19,7 @@ def main():
     #
     ##  Window Setup
     #
-    os.environ["SDL_VIDEO_WINDOW_POS"] = "%d,%d" % (500, 100) #Set initial window position
+    os.environ["SDL_VIDEO_WINDOW_POS"] = "%d,%d" % (460, 0) #Set initial window position
     pygame.init()
     context["screen_width"], context["screen_height"] = 1000, 1000
     screen = pygame.display.set_mode((context["screen_width"], context["screen_height"]))

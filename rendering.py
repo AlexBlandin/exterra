@@ -64,7 +64,7 @@ def text_box(string, x = 0, y = 0, padding = 5, fontsize = 28, fontcolour = (10,
 def button(x = 0, y = 0, width = 0, height = 0, colour = (0, 0, 0), image = None, text = None, padding = 5, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
     if text != None:
         button, buttonrect = text_box(text, x = x, y = y, padding = padding, fontsize = fontsize, fontcolour = fontcolour, colour = colour, image = image, font = font, aa = aa)
-        width, height = buttonrect
+        x, y, width, height = buttonrect
     else:
         button, buttonrect = box(x = x, y = y, width = height, height = height, colour = colour, image = image)
 
