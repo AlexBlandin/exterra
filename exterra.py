@@ -143,6 +143,8 @@ def main():
         clicked = within(context["mousepos"], earthrect)
         if clicked and context["leftdown"]:
             context["offset"] -= 1
+        else:
+            context["offset"] += 0.3
 
 
         clicked, buttonpair = button(x = 700, y = 700, width = 100, height = 100, colour = (200, 200, 200))
