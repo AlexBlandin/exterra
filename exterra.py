@@ -36,6 +36,7 @@ def main():
     #
     framerate = 60 #60FPS #PCMasterRace #FrameRatePolice
     clock = pygame.time.Clock()
+    context["leftdown"] = False
 
 
     #
@@ -72,9 +73,13 @@ def main():
             continue
 
         #mouse https://www.pygame.org/docs/ref/mouse.html
+        context["leftwaspressed"] = context["leftdown"]
         context["leftdown"], context["rightdown"], context["middledown"] = pygame.mouse.get_pressed()
         context["mousepos"] = pygame.mouse.get_pos() # -> (x, y)
-        context["leftpressed"] = False
+        if context["leftdown"] and not context["leftwaspressed"]:
+            context["leftpressed"] = True
+        else:
+            context["leftpressed"] = False
 
         #for now not "zeroing" the screen, relying on background being sufficiently large, otherwise will need to use coloured fill to start frame
         currentbackground = "stars.png"
