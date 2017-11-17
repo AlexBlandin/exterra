@@ -19,9 +19,9 @@ def main():
     #
     ##  Window Setup
     #
-    os.environ["SDL_VIDEO_WINDOW_POS"] = "%d,%d" % (460, 0) #Set initial window position
+    os.environ["SDL_VIDEO_WINDOW_POS"] = "%d,%d" % (500, 100) #Set initial window position
     pygame.init()
-    context["screen_width"], context["screen_height"] = 1000, 1000
+    context["screen_width"], context["screen_height"] = 900, 900
     screen = pygame.display.set_mode((context["screen_width"], context["screen_height"]))
     pygame.display.set_caption("Caption")
 
@@ -99,6 +99,8 @@ def main():
             #move to game state.
             #Redraw the frame with the maps and buttons.
             #open tutorial? We'll need to make some class to give the first instructions on how to interact with the interface.
+
+        pressed, loadgame = button(text = "Load Game", x = context["screen_width"] / 2 - 54, y = 150, width = 108)
 
 
 
