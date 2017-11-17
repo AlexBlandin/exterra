@@ -29,17 +29,20 @@ def text_image(string, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa
 
     return text
 
-def text(string, x = 0, y = 0, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
+def text(string, x = 0, centerx = None, y = 0, centery = None, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
     image = text_image(string, fontsize, fontcolour, font, aa)
+    imagerect = image.get_rect().move(x, y)
+    if centerx != None:
+        imagerect = image.get_rect(centerx = centerx, centery = centery)
 
-    return image, image.get_rect().move(x, y)
+    return image, imagerect
 
 
 
 #
 ##  Menu options
 #
-def box(x = 0, y = 0, width = 0, height = 0, colour = (0, 0, 0), image = None):
+def box(x = 0, centerx = None, y = 0, centery = None, width = 0, height = 0, colour = (0, 0, 0), image = None):
     box = pygame.Surface((width, height))
 
     box.fill(colour)
@@ -47,21 +50,26 @@ def box(x = 0, y = 0, width = 0, height = 0, colour = (0, 0, 0), image = None):
     if image != None:
         box.blit(images[image])
 
-    return box, box.get_rect().move(x, y)
+    boxrect = box.get_rect().move(x, y)
+
+    if centerx != None:
+        boxrect = box.get_rect(centerx = centerx, centery = centery)
+
+    return box, boxrect
 
 
-def text_box(string, x = 0, y = 0, padding = 5, fontsize = 28, fontcolour = (10, 10, 10), colour = (0, 0, 0), image = None, font = None, aa = 1):
+def text_box(string, x = 0, centerx = None, y = 0, centery = None, padding = 5, fontsize = 28, fontcolour = (10, 10, 10), colour = (0, 0, 0), image = None, font = None, aa = 1):
     textimage, textrect = text(string, fontsize = fontsize, fontcolour = fontcolour, font = font, aa = aa)
     scratch, pad, width, height = textrect
 
-    textbox, boxrect = box(x = x - padding, y = y - padding, width = width + (2*padding), height = height + (2*padding) - 3, colour = colour, image = image)
+    textbox, boxrect = box(x = x - padding, centerx = centerx, y = y - padding, centery = centery, width = width + (2*padding), height = height + (2*padding) - 3, colour = colour, image = image)
 
     textbox.blit(textimage, (padding, padding))
 
     return textbox, boxrect
 
 
-def button(hold = False, x = 0, y = 0, width = 0, height = 0, colour = (200, 200, 200), image = None, text = None, padding = 5, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
+def button(hold = False, x = 0, centerx = None, y = 0, centery = None, width = 0, height = 0, colour = (200, 200, 200), image = None, text = None, padding = 5, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
     if text != None:
         button, buttonrect = text_box(text, x = x, y = y, padding = padding, fontsize = fontsize, fontcolour = fontcolour, colour = colour, image = image, font = font, aa = aa)
         x, y, width, height = buttonrect
