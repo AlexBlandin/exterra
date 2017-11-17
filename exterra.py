@@ -107,12 +107,19 @@ def main():
             #open tutorial? We'll need to make some class to give the first instructions on how to interact with the interface.
         blitque.append(newgame)
 
-        pressed, loadgame = button(text = "Load Game", x = context["screen_width"] / 2 - 54, y = 150, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
+        pressed, loadgame = button(text = "Load Game", x = context["screen_width"] / 2 - 54, y = 175, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
         if pressed:
+            print("Load game")
             #give up the launch codes
             #Load the previous game state. Menus should be closed.
             pass
+        blitque.append(loadgame)
 
+        pressed, quitgame = button(text = "Fuck this Gay Earth", x = context["screen_width"] / 2 - 54, y = 250, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
+        if pressed:
+            print("Quit Game")
+            running = False
+        blitque.append(quitgame)
 
 
         for image, rect in blitque: #blit straight to screen -- can do by layer IF NEEDED, would start with background & move forward
