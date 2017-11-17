@@ -70,8 +70,14 @@ def main():
             #pygame.mouse.set_visible()
             #pygame.mouse.get_focused()
 
+
+
             currentbackground = "stars.png"
             blitque = [(image[currentbackground], (0,0))]
+
+
+
+
 
             title, titlerect = text_box("ExTerra", fontsize = 36, fontcolour = (70, 70, 70))
             subtitle = text_image("A William Webb & Alex Blandin 4X Space Game", 28, (10, 10, 10))
