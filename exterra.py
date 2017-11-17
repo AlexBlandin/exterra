@@ -140,14 +140,16 @@ def main():
 
         blitque.append((earth, earthrect))
 
+        clicked = within(context["mousepos"], earthrect)
+        if clicked and context["leftdown"]:
+            context["offset"] -= 1
+
+
         clicked, buttonpair = button(x = 700, y = 700, width = 100, height = 100, colour = (200, 200, 200))
         if clicked:
-            context["offset"] -= 1
             image, rect = buttonpair
             image.fill((170, 170, 170))
             buttonpair = image, rect
-        else:
-            context["offset"] += 0.3
         blitque.append(buttonpair)
 
 
