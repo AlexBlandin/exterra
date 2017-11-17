@@ -114,6 +114,8 @@ def main():
 
 
 
+
+
         #Draw a white rect
         rectangle, rectrect = box(x = (context["screen_width"]/2) - 300, y = 0, width = 600, height = 70, colour = (90, 90, 90))
         blitque.append((rectangle, rectrect))
@@ -146,7 +148,6 @@ def main():
         else:
             context["offset"] += 0.3
 
-
         clicked, buttonpair = button(x = 700, y = 700, width = 100, height = 100, colour = (200, 200, 200))
         if clicked:
             image, rect = buttonpair
@@ -154,6 +155,7 @@ def main():
             buttonpair = image, rect
             print("TOUCH DAT BUTTON")
         blitque.append(buttonpair)
+
 
 
 
