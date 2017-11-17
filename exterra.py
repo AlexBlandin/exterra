@@ -21,7 +21,7 @@ def main():
     #
     os.environ["SDL_VIDEO_WINDOW_POS"] = "%d,%d" % (500, 100) #Set initial window position
     pygame.init()
-    context["screen_width"], context["screen_height"] = 933, 900
+    context["screen_width"], context["screen_height"] = 1000, 1000
     screen = pygame.display.set_mode((context["screen_width"], context["screen_height"]))
     pygame.display.set_caption("Caption")
 
@@ -94,7 +94,7 @@ def main():
         blitque.append((subtitle, subtitlerect))
 
 
-        
+
 
 
         for image, rect in blitque: #blit straight to screen -- can do by layer IF NEEDED, would start with background & move forward
