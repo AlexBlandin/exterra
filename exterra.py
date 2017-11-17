@@ -52,7 +52,7 @@ def main():
     ##  Setting up the save data -- and testing it for now
     #
     save = Save()
-    save.load()
+    ingame = False
 
 
     #
@@ -98,27 +98,33 @@ def main():
         blitque.append((title, titlerect))
         blitque.append((subtitle, subtitlerect))
 
-        pressed, newgame = button(text = "New Game", centerx = context["screen_width"] / 2, centery = 100, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
-        if pressed:
-            save.clear()
-            print("New game")
-            #move to game state.
-            #Redraw the frame with the maps and buttons.
-            #open tutorial? We'll need to make some class to give the first instructions on how to interact with the interface.
-        blitque.append(newgame)
+        if ingame:
+            pass
+        else:
+            pressed, newgame = button(text = "New Game", centerx = context["screen_width"] / 2, centery = 100, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
+            if pressed:
+                save.clear()
+                print("New game")
+                ingame = True
+                #move to game state.
+                #Redraw the frame with the maps and buttons.
+                #open tutorial? We'll need to make some class to give the first instructions on how to interact with the interface.
+            blitque.append(newgame)
 
-        pressed, loadgame = button(text = "Load Game", centerx = context["screen_width"] / 2, centery = 175, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
-        if pressed:
-            print("Load game")
-            #give up the launch codes
-            #Load the previous game state. Menus should be closed.
-        blitque.append(loadgame)
+            pressed, loadgame = button(text = "Load Game", centerx = context["screen_width"] / 2, centery = 175, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
+            if pressed:
+                save.load()
+                print("Load game")
+                ingame = True
+                #give up the launch codes
+                #Load the previous game state. Menus should be closed.
+            blitque.append(loadgame)
 
-        pressed, quitgame = button(text = "Fuck this Gay Earth", centerx = context["screen_width"] / 2, centery = 250, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
-        if pressed:
-            print("Quit Game")
-            running = False
-        blitque.append(quitgame)
+            pressed, quitgame = button(text = "Fuck this Gay Earth", centerx = context["screen_width"] / 2, centery = 250, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
+            if pressed:
+                print("Quit Game")
+                running = False
+            blitque.append(quitgame)
 
 
         for image, rect in blitque: #blit straight to screen -- can do by layer IF NEEDED, would start with background & move forward
