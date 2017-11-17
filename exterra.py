@@ -32,12 +32,13 @@ def main():
     images["stars.png"] = import_image("stars.png")
 
     #
-    ##  Physics Setup
+    ##  State Setup
     #
     framerate = 60 #60FPS #PCMasterRace #FrameRatePolice
     clock = pygame.time.Clock()
-    context["leftdown"] = False
-
+    context["leftdown"], context["rightdown"], context["middown"] = False, False, False
+    context["leftwaspressed"], context["rightwaspressed"], context["midwaspressed"] = False, False, False
+    context["leftpressed"], context["rightpressed"], context["midpressed"] = False, False, False
 
     #
     ##  Initialise any static images based on screen-size etc.
@@ -56,11 +57,22 @@ def main():
     def solarsystem():
         print("A pretty picture of the solar system")
 
+        #calculate offset for images
+
+
+        #make your pretty picture
+
+
+
+
+        #output
+        #5blitque.append(())
+
     def research():
         print("Some nice research statistics and options")
 
-    menu = {0 : solarsystem,
-            1 : research
+    menu = {0: solarsystem,
+            1: research
     }
     currentmenu = 0
 
@@ -87,22 +99,65 @@ def main():
             elif event.type == KEYDOWN and event.key == K_ESCAPE:
                 running = False
                 break
+            elif event.type == MOUSEBUTTONDOWN:
+                whichbutton = event.button
+                if (whichbutton == 1): #leftclick
+                    context["leftwaspressed"] = context["leftdown"]
+                    context["leftdown"] = True
+                elif (whichbutton == 2): #rightclick
+                    context["rightwaspressed"] = context["rightdown"]
+                    context["rightdown"] = True
+                elif (whichbutton == 3): #middleclick
+                    context["midwaspressed"] = context["middown"]
+                    context["middown"] = True
+                elif (whichbutton == 4): #scrollup
+                    context["mousescrollup"] = True
+                elif (whichbutton == 5): #scrolldown
+                    context["mousescrolldown"] = True
+                else:
+                    pass
+            elif event.type == MOUSEBUTTONUP:
+                whichbutton = event.button
+                if (whichbutton == 1): #leftclick
+                    context["leftwaspressed"] = context["leftdown"]
+                    context["leftdown"] = False
+                elif (whichbutton == 2): #rightclick
+                    context["rightwaspressed"] = context["rightdown"]
+                    context["rightdown"] = False
+                elif (whichbutton == 3): #middleclick
+                    context["midwaspressed"] = context["middown"]
+                    context["middown"] = False
+                elif (whichbutton == 4): #scrollup
+                    context["mousescrollup"] = False
+                elif (whichbutton == 5): #scrolldown
+                    context["mousescrolldown"] = False
+                else:
+                    pass
         if not running:
             continue
 
         #mouse https://www.pygame.org/docs/ref/mouse.html
-        context["leftwaspressed"] = context["leftdown"]
-        context["leftdown"], context["rightdown"], context["middledown"] = pygame.mouse.get_pressed()
+        context["leftdown"], context["rightdown"], context["middown"] = pygame.mouse.get_pressed()
         context["mousepos"] = pygame.mouse.get_pos() # -> (x, y)
         if context["leftdown"] and not context["leftwaspressed"]:
             context["leftpressed"] = True
         else:
             context["leftpressed"] = False
 
+        if context["rightdown"] and not context["rightwaspressed"]:
+            context["rightpressed"] = True
+        else:
+            context["rightpressed"] = False
+
+        if context["middown"] and not context["midwaspressed"]:
+            context["midpressed"] = True
+        else:
+            context["midpressed"] = False
+
+
         #for now not "zeroing" the screen, relying on background being sufficiently large, otherwise will need to use coloured fill to start frame
         currentbackground = "stars.png"
         blitque = [(images[currentbackground], (0, 0))] #refresh blitque with the background
-
 
 
 
