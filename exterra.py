@@ -117,7 +117,7 @@ def main():
         blitque.append((subtitle, subtitlerect))
 
         if ingame:
-            menu[currentmenu] #say, 0 or 1 or 2 etc.
+            menu[currentmenu]() #say, 0 or 1 or 2 etc.
 
         else:
             pressed, newgame = button(text = "New Game", centerx = context["screen_width"] / 2, centery = 100, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
