@@ -71,10 +71,10 @@ def text_box(string, x = 0, centerx = None, y = 0, centery = None, padding = 5, 
 
 def button(hold = False, x = 0, centerx = None, y = 0, centery = None, width = 0, height = 0, colour = (200, 200, 200), image = None, text = None, padding = 5, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
     if text != None:
-        button, buttonrect = text_box(text, x = x, y = y, padding = padding, fontsize = fontsize, fontcolour = fontcolour, colour = colour, image = image, font = font, aa = aa)
+        button, buttonrect = text_box(text, x = x, centerx = centerx, y = y, centery = centery, padding = padding, fontsize = fontsize, fontcolour = fontcolour, colour = colour, image = image, font = font, aa = aa)
         x, y, width, height = buttonrect
     else:
-        button, buttonrect = box(x = x, y = y, width = height, height = height, colour = colour, image = image)
+        button, buttonrect = box(x = x, centerx = centerx, y = y, centery = centery, width = height, height = height, colour = colour, image = image)
 
     pair = (button, buttonrect)
 
