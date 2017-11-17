@@ -74,7 +74,7 @@ def main():
         #mouse https://www.pygame.org/docs/ref/mouse.html
         context["leftdown"], context["rightdown"], context["middledown"] = pygame.mouse.get_pressed()
         context["mousepos"] = pygame.mouse.get_pos() # -> (x, y)
-
+        context["leftpressed"] = False
 
         #for now not "zeroing" the screen, relying on background being sufficiently large, otherwise will need to use coloured fill to start frame
         currentbackground = "stars.png"
@@ -96,13 +96,17 @@ def main():
         pressed, newgame = button(text = "New Game", x = context["screen_width"] / 2 - 54, y = 100, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
         if pressed:
             save.clear()
+            print("New game")
             #move to game state.
             #Redraw the frame with the maps and buttons.
             #open tutorial? We'll need to make some class to give the first instructions on how to interact with the interface.
+        blitque.append(newgame)
 
-        pressed, loadgame = button(text = "Load Game", x = context["screen_width"] / 2 - 54, y = 150, width = 108)
-
-
+        pressed, loadgame = button(text = "Load Game", x = context["screen_width"] / 2 - 54, y = 150, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
+        if pressed:
+            #give up the launch codes
+            #Load the previous game state. Menus should be closed.
+            pass
 
 
 

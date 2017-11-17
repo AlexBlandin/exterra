@@ -61,7 +61,7 @@ def text_box(string, x = 0, y = 0, padding = 5, fontsize = 28, fontcolour = (10,
     return textbox, boxrect
 
 
-def button(x = 0, y = 0, width = 0, height = 0, colour = (0, 0, 0), image = None, text = None, padding = 5, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
+def button(hold = False, x = 0, y = 0, width = 0, height = 0, colour = (200, 200, 200), image = None, text = None, padding = 5, fontsize = 28, fontcolour = (10, 10, 10), font = None, aa = 1):
     if text != None:
         button, buttonrect = text_box(text, x = x, y = y, padding = padding, fontsize = fontsize, fontcolour = fontcolour, colour = colour, image = image, font = font, aa = aa)
         x, y, width, height = buttonrect
@@ -70,7 +70,11 @@ def button(x = 0, y = 0, width = 0, height = 0, colour = (0, 0, 0), image = None
 
     pair = (button, buttonrect)
 
-    if context["leftdown"] and within(context["mousepos"], (x, y, width, height)):
+    if hold:
+        mouse = context["leftdown"]
+    else:
+        mouse = context["leftpressed"]
+    if mouse and within(context["mousepos"], (x, y, width, height)):
         return True, pair
     else:
         return False, pair
