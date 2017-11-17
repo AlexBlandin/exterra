@@ -94,6 +94,9 @@ def main():
         blitque.append((subtitle, subtitlerect))
 
 
+        
+
+
         for image, rect in blitque: #blit straight to screen -- can do by layer IF NEEDED, would start with background & move forward
             screen.blit(image, rect)
 
