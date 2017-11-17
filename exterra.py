@@ -48,6 +48,24 @@ def main():
     images["basecolour"] = basecolour
 
 
+
+
+    #
+    ##  Pretty screens here
+    #
+    def solarsystem():
+        pass
+
+    def research():
+        pass
+
+    menu = {0 : solarsystem,
+            1 : research
+    }
+    currentmenu = 0
+
+
+
     #
     ##  Setting up the save data -- and testing it for now
     #
@@ -99,13 +117,15 @@ def main():
         blitque.append((subtitle, subtitlerect))
 
         if ingame:
-            pass
+            menu[currentmenu] #say, 0 or 1 or 2 etc.
+
         else:
             pressed, newgame = button(text = "New Game", centerx = context["screen_width"] / 2, centery = 100, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
             if pressed:
                 save.clear()
                 print("New game")
                 ingame = True
+                currentmenu = 0
                 #move to game state.
                 #Redraw the frame with the maps and buttons.
                 #open tutorial? We'll need to make some class to give the first instructions on how to interact with the interface.
@@ -116,6 +136,7 @@ def main():
                 save.load()
                 print("Load game")
                 ingame = True
+                currentmenu = 0
                 #give up the launch codes
                 #Load the previous game state. Menus should be closed.
             blitque.append(loadgame)
