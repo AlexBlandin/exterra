@@ -93,6 +93,13 @@ def main():
         blitque.append((title, titlerect))
         blitque.append((subtitle, subtitlerect))
 
+        pressed, newgame = button(text = "New Game", x = context["screen_width"] / 2 - 54, y = 100, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
+        if pressed:
+            save.clear()
+            #move to game state.
+            #Redraw the frame with the maps and buttons.
+            #open tutorial? We'll need to make some class to give the first instructions on how to interact with the interface.
+
 
 
 
