@@ -29,6 +29,7 @@ def main():
     #
     ##  Image imports
     #
+    images["stars.png"] = import_image("stars.png")
 
     #
     ##  Physics Setup
