@@ -112,7 +112,6 @@ def main():
             print("Load game")
             #give up the launch codes
             #Load the previous game state. Menus should be closed.
-            pass
         blitque.append(loadgame)
 
         pressed, quitgame = button(text = "Fuck this Gay Earth", x = context["screen_width"] / 2 - 54, y = 250, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
