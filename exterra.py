@@ -29,12 +29,6 @@ def main():
     #
     ##  Image imports
     #
-    images["earth.png"] = import_image("earth.png", -1)
-<<<<<<< HEAD
-=======
-    images["stars.png"] = import_image("stars.png")
->>>>>>> b10f0974a31a7e4fdd31242a91be9b00753ea159
-
 
     #
     ##  Physics Setup
