@@ -152,6 +152,7 @@ def main():
             image, rect = buttonpair
             image.fill((170, 170, 170))
             buttonpair = image, rect
+            print("TOUCH DAT BUTTON")
         blitque.append(buttonpair)
 
 
