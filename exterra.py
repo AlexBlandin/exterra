@@ -138,7 +138,7 @@ def main():
 
         #Generate a more managable Earth. Might be impossible
         earth = pygame.transform.scale(images["earth.png"], (256, 256))
-        earthrect = earth.get_rect(centerx = context["screen_width"] / 2, centery = (context["screen_height"] /2 ) + context["offset"])
+        earthrect = earth.get_rect(centerx = context["screen_width"] / 2, centery = (context["screen_height"] / 2 ) + context["offset"])
 
         blitque.append((earth, earthrect))
 
