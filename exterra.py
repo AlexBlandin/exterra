@@ -54,10 +54,10 @@ def main():
     ##  Pretty screens here
     #
     def solarsystem():
-        pass
+        print("A pretty picture of the solar system")
 
     def research():
-        pass
+        print("Some nice research statistics and options")
 
     menu = {0 : solarsystem,
             1 : research
