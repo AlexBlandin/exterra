@@ -83,7 +83,17 @@ def main():
         blitque = [(images[currentbackground], (0, 0))] #refresh blitque with the background
 
 
+        #Some text rendering
+        title, titlerect = text_box("ExTerra", fontsize = 36, fontcolour = (150, 150, 150))
+        subtitle = text_image("A William Webb & Alex Blandin 4X Space Game", 28, (120, 120, 120))
 
+        #Set text positions
+        titlerect = title.get_rect(centerx = context["screen_width"] / 2, y = 5)
+        subtitlerect = subtitle.get_rect(centerx = context["screen_width"] / 2, centery = 50)
+
+        #Showing it can blit to the background
+        blitque.append((title, titlerect))
+        blitque.append((subtitle, subtitlerect))
 
 
         for image, rect in blitque: #blit straight to screen -- can do by layer IF NEEDED, would start with background & move forward
