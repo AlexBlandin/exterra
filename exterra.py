@@ -144,7 +144,7 @@ def main():
         if clicked:
             context["offset"] -= 1
             image, rect = buttonpair
-            image.fill(170, 170, 170)
+            image.fill((170, 170, 170))
             buttonpair = image, rect
         else:
             context["offset"] += 0.3
