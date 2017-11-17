@@ -30,6 +30,7 @@ def main():
     ##  Image imports
     #
     images["earth.png"] = import_image("earth.png", -1)
+    images["stars.png"] = import_image("stars.png")
 
 
     #
@@ -78,7 +79,7 @@ def main():
 
 
         #for now not "zeroing" the screen, relying on background being sufficiently large, otherwise will need to use coloured fill to start frame
-        currentbackground = "basecolour"
+        currentbackground = "stars.png"
         blitque = [(images[currentbackground], (0, 0))] #refresh blitque with the background
 
 
