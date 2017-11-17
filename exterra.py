@@ -125,8 +125,8 @@ def main():
         subtitle = text_image("A William Webb & Alex Blandin 4X Space Game", 28, (10, 10, 10))
 
         #Set text positions
-        titlerect = title.get_rect(centerx = context["screen_width"]/2, y = 5)
-        subtitlerect = subtitle.get_rect(centerx = context["screen_width"]/2, centery = 50)
+        titlerect = title.get_rect(centerx = context["screen_width"] / 2, y = 5)
+        subtitlerect = subtitle.get_rect(centerx = context["screen_width"] / 2, centery = 50)
 
         #Showing it can blit to the background
         blitque.append((title, titlerect))
@@ -138,7 +138,7 @@ def main():
 
         #Generate a more managable Earth. Might be impossible
         earth = pygame.transform.scale(images["earth.png"], (256, 256))
-        earthrect = earth.get_rect(centerx = context["screen_width"]/2, centery = (context["screen_height"]/2) + context["offset"])
+        earthrect = earth.get_rect(centerx = context["screen_width"] / 2, centery = (context["screen_height"] /2 ) + context["offset"])
 
         blitque.append((earth, earthrect))
 
