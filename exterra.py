@@ -70,7 +70,7 @@ def main():
 
 
         #output
-        #5blitque.append(())
+        #blitque.append(())
 
     def research():
         print("Some nice research statistics and options")
