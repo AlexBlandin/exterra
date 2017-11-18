@@ -39,6 +39,7 @@ def main():
     context["leftdown"], context["rightdown"], context["middown"] = False, False, False
     context["leftwaspressed"], context["rightwaspressed"], context["midwaspressed"] = False, False, False
     context["leftpressed"], context["rightpressed"], context["midpressed"] = False, False, False
+    context["scrollup"], context["scrolldown"] = False, False
 
     #
     ##  Initialise any static images based on screen-size etc.
@@ -55,10 +56,13 @@ def main():
     ##  Pretty screens here
     #
     def solarsystem():
-        print("A pretty picture of the solar system")
+        #print("A pretty picture of the solar system")
 
         #calculate offset for images
-
+        if context["scrollup"]:
+            print("Scrolling up!")
+        if context["scrolldown"]:
+            print("Scrolling down :(")
 
         #make your pretty picture
 
@@ -102,18 +106,23 @@ def main():
             elif event.type == MOUSEBUTTONDOWN:
                 whichbutton = event.button
                 if (whichbutton == 1): #leftclick
+                    print("left")
                     context["leftwaspressed"] = context["leftdown"]
                     context["leftdown"] = True
                 elif (whichbutton == 2): #rightclick
+                    print("left")
                     context["rightwaspressed"] = context["rightdown"]
                     context["rightdown"] = True
                 elif (whichbutton == 3): #middleclick
+                    print("left")
                     context["midwaspressed"] = context["middown"]
                     context["middown"] = True
                 elif (whichbutton == 4): #scrollup
-                    context["mousescrollup"] = True
+                    print("left")
+                    context["scrollup"] = True
                 elif (whichbutton == 5): #scrolldown
-                    context["mousescrolldown"] = True
+                    print("left")
+                    context["scrolldown"] = True
                 else:
                     pass
             elif event.type == MOUSEBUTTONUP:
@@ -128,9 +137,9 @@ def main():
                     context["midwaspressed"] = context["middown"]
                     context["middown"] = False
                 elif (whichbutton == 4): #scrollup
-                    context["mousescrollup"] = False
+                    context["scrollup"] = False
                 elif (whichbutton == 5): #scrolldown
-                    context["mousescrolldown"] = False
+                    context["scrolldown"] = False
                 else:
                     pass
         if not running:
