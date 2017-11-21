@@ -50,6 +50,10 @@ def main():
     images["basecolour"] = basecolour
 
 
+    some_data_plot = linear_plot([3, 1, 2, 7], size_in_inches = [3, 3]) #plot the points, optional arguments after
+    images["linegraph"] = graph_image(some_data_plot) #generate an image pygame understands
+    images["piechart"] = graph_image(pie_chart([3.14159, 6.28318], labels = ["pi", "tau"], shadow = True, size_in_inches = [3.14, 3.14]))
+
 
 
     #
@@ -105,28 +109,25 @@ def main():
                 break
             elif event.type == MOUSEBUTTONDOWN:
                 whichbutton = event.button
+                print(whichbutton)
                 if (whichbutton == 1): #leftclick
-                    print("left")
                     context["leftwaspressed"] = context["leftdown"]
                     context["leftdown"] = True
                 elif (whichbutton == 2): #rightclick
-                    print("left")
                     context["rightwaspressed"] = context["rightdown"]
                     context["rightdown"] = True
                 elif (whichbutton == 3): #middleclick
-                    print("left")
                     context["midwaspressed"] = context["middown"]
                     context["middown"] = True
                 elif (whichbutton == 4): #scrollup
-                    print("left")
                     context["scrollup"] = True
                 elif (whichbutton == 5): #scrolldown
-                    print("left")
                     context["scrolldown"] = True
                 else:
                     pass
             elif event.type == MOUSEBUTTONUP:
                 whichbutton = event.button
+                print(whichbutton)
                 if (whichbutton == 1): #leftclick
                     context["leftwaspressed"] = context["leftdown"]
                     context["leftdown"] = False
@@ -186,6 +187,9 @@ def main():
             blitque.append((title, titlerect))
             blitque.append((subtitle, subtitlerect))
 
+            blitque.append((images["linegraph"], (533, 300))) #and now we can blit a graph
+            blitque.append((images["piechart"], (100, 300)))
+
             pressed, newgame = button(text = "New Game", centerx = context["screen_width"] / 2, centery = 100, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
             if pressed:
                 save.clear()
@@ -207,7 +211,7 @@ def main():
                 #Load the previous game state. Menus should be closed.
             blitque.append(loadgame)
 
-            pressed, quitgame = button(text = "Fuck this Gay Earth", centerx = context["screen_width"] / 2, centery = 250, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
+            pressed, quitgame = button(text = "Quit Game", centerx = context["screen_width"] / 2, centery = 250, width = 108, height = 50, colour = (200, 200, 200), fontsize = 28, fontcolour = (10, 10, 10))
             if pressed:
                 print("Quit Game")
                 running = False
